@@ -25,10 +25,15 @@ while($limit === 500) {
     $offset += 500;
 }
 
-//foreach($data as $part) {
-//    foreach($part as $contact) {
-//        echo $contact['id'].'\r\n';
-//    }
-//}
-
-echo print_r($data[0][0]);
+foreach($data as $part) {
+    foreach($part as $contact) {
+        foreach($contact['custom_fields'] as $field) {
+            if (strcmp($field['id'], '803138') === 0) {
+                foreach($field['values'] as $value) {
+                    echo $value['value'].', ';
+                }
+                echo '||||||||||';
+            }
+        }
+    }
+}
