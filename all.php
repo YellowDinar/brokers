@@ -19,10 +19,10 @@ while($limit === 500) {
         'limit_rows' => $limit,
         'limit_offset' => $offset
     ));
-    array_push($data, $arr);
+    array_push($data, var_dump($arr));
     $limit = count($arr);
     $sum += count($arr);
     $offset += 500;
 }
 
-echo $sum;
+echo print_r($data);
