@@ -7,7 +7,7 @@
  */
 set_time_limit(0);
 ini_set('memory_limit', '1G');
-require_once 'amocrm/amocrm/Amo2.php';
+require_once 'amocrm/Amo2.php';
 
 $amo = new Amo(null, null, null, null, null, null);
 $limit = 500;
