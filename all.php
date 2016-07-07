@@ -19,10 +19,14 @@ while($limit === 500) {
         'limit_rows' => $limit,
         'limit_offset' => $offset
     ));
-    array_push($data, var_dump($arr));
+    array_push($data, $arr);
     $limit = count($arr);
     $sum += count($arr);
     $offset += 500;
 }
 
-echo print_r($data);
+foreach($data as $part) {
+    foreach($part as $contact) {
+        echo $contact['id'].'\r\n';
+    }
+}
