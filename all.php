@@ -13,6 +13,7 @@ $amo = new Amo(null, null, null, null, null, null);
 $limit = 500;
 $offset = 0;
 $data = array();
+$sum = 0;
 while($limit === 500) {
     $arr = $amo->contactsList(array(
         'limit_rows' => $limit,
@@ -20,9 +21,8 @@ while($limit === 500) {
     ));
     array_push($data, $arr);
     $limit = count($arr);
+    $sum += count($arr);
     $offset += 500;
 }
 
-echo print_r($data);
-echo '<br>---------------------------------<br>';
-echo count($data);
+echo $sum;
