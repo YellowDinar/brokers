@@ -25,8 +25,10 @@ while($limit === 500) {
     $offset += 500;
 }
 
-foreach($data as $part) {
-    foreach($part as $contact) {
-        echo $contact['id'].'\r\n';
-    }
-}
+//foreach($data as $part) {
+//    foreach($part as $contact) {
+//        echo $contact['id'].'\r\n';
+//    }
+//}
+
+echo print_r($data[0][0]);
