@@ -38,13 +38,26 @@ foreach($data as $part) {
                             if (strlen($number) > 7) {
                                 $db->where ("value", substr($number, -10));
                                 $phone = $db->getOne ("phone");
-                                echo print_r($phone).' , ';
+                                if(count($phone) > 0) {
+                                    $insert_data = Array (
+                                        "contact_id" => $contact['id'],
+                                        "name" => $contact['name'],
+                                        "phone_id" => $phone['id']
+                                    );
+                                    $db->insert ('contact', $insert_data);
+                                }
                             } else {
                                 $db->where ("value", $number);
                                 $phone = $db->getOne ("phone");
-                                echo print_r($phone).' , ';
+                                if(count($phone) > 0) {
+                                    $insert_data = Array (
+                                        "contact_id" => $contact['id'],
+                                        "name" => $contact['name'],
+                                        "phone_id" => $phone['id']
+                                    );
+                                    $db->insert ('contact', $insert_data);
+                                }
                             }
-                            echo '||||||||||||||';
                         }
                     }
                 }
