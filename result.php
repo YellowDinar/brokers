@@ -13,4 +13,4 @@ require_once 'amocrm/MysqliDb.php';
 $db = new MysqliDb ('localhost', 'root', 'root', 'brokers');
 
 $phone_numbers = $db->get('phone');
-echo count($phone_numbers);
+echo print_r($phone_numbers);
