@@ -13,4 +13,9 @@ require_once 'amocrm/MysqliDb.php';
 $db = new MysqliDb ('localhost', 'root', 'root', 'brokers');
 
 $phone_numbers = $db->get('phone');
-echo print_r($phone_numbers);
+$result = array();
+foreach($phone_numbers as $phone) {
+    $db->where ("phone_id", $phone['id']);
+    $contacts = $db->get("contact");
+    echo print_r($contacts).'|||||||||||||';
+}
