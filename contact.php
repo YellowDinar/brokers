@@ -25,31 +25,31 @@ while($limit === 500) {
     $sum += count($arr);
     $offset += 500;
 }
-echo print_r($data[0][0]);
-//$db = new MysqliDb ('localhost', 'root', 'root', 'brokers');
-//foreach($data as $part) {
-//    foreach($part as $contact) {
-//        foreach($contact['custom_fields'] as $field) {
-//            if (strcmp($field['id'], '803138') === 0) {
-//                foreach($field['values'] as $value) {
-//                    preg_match('/\d+/', $value['value'], $r);
-//                    if (isset($r[0])){
-//                        $number = $r[0];
-//                        if (strlen($number) > 6) {
-//                            if (strlen($number) > 7) {
-//                                $insert_data = Array (
-//                                    "value" => substr($number, -10)
-//                                );
-//                            } else {
-//                                $insert_data = Array (
-//                                    "value" => $number
-//                                );
-//                            }
-//                            $db->insert ('phone', $insert_data);
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
-//}
+$db = new MysqliDb ('localhost', 'root', 'root', 'brokers');
+$db = new MysqliDb ('localhost', 'root', 'root', 'brokers');
+foreach($data as $part) {
+    foreach($part as $contact) {
+        foreach($contact['custom_fields'] as $field) {
+            if (strcmp($field['id'], '803138') === 0) {
+                foreach($field['values'] as $value) {
+                    preg_match('/\d+/', $value['value'], $r);
+                    if (isset($r[0])){
+                        $number = $r[0];
+                        if (strlen($number) > 6) {
+                            if (strlen($number) > 7) {
+                                $db->where ("value", substr($number, -10));
+                                $phone = $db->getOne ("phone");
+                                echo print_r($phone).' , ';
+                            } else {
+                                $db->where ("value", $number);
+                                $phone = $db->getOne ("phone");
+                                echo print_r($phone).' , ';
+                            }
+                            echo '||||||||||||||';
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
