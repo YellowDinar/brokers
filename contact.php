@@ -26,7 +26,6 @@ while($limit === 500) {
     $offset += 500;
 }
 $db = new MysqliDb ('localhost', 'root', 'root', 'brokers');
-$db = new MysqliDb ('localhost', 'root', 'root', 'brokers');
 foreach($data as $part) {
     foreach($part as $contact) {
         foreach($contact['custom_fields'] as $field) {
