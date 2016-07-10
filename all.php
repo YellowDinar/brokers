@@ -32,14 +32,16 @@ foreach($data as $part) {
             if (strcmp($field['id'], '803138') === 0) {
                 foreach($field['values'] as $value) {
                     preg_match('/\d+/', $value['value'], $r);
-                    $number = $r[0];
-                    if (strlen($number) > 6) {
-                        if (strlen($number) > 7) {
-                            echo substr($number, -10).', ';
-                            $rrr += 1;
-                        } else {
-                            echo $number.', ';
-                            $rrr += 1;
+                    if (isset($r[0])){
+                        $number = $r[0];
+                        if (strlen($number) > 6) {
+                            if (strlen($number) > 7) {
+                                echo substr($number, -10).', ';
+                                $rrr += 1;
+                            } else {
+                                echo $number.', ';
+                                $rrr += 1;
+                            }
                         }
                     }
                 }
