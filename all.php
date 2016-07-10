@@ -25,7 +25,7 @@ while($limit === 500) {
     $sum += count($arr);
     $offset += 500;
 }
-$rrr = 0;
+$db = new MysqliDb ('localhost', 'root', 'root', 'brokers');
 foreach($data as $part) {
     foreach($part as $contact) {
         foreach($contact['custom_fields'] as $field) {
@@ -36,27 +36,19 @@ foreach($data as $part) {
                         $number = $r[0];
                         if (strlen($number) > 6) {
                             if (strlen($number) > 7) {
-                                echo substr($number, -10).', ';
-                                $rrr += 1;
+                                $insert_data = Array (
+                                    "value" => substr($number, -10)
+                                );
                             } else {
-                                echo $number.', ';
-                                $rrr += 1;
+                                $insert_data = Array (
+                                    "value" => $number
+                                );
                             }
+                            $db->insert ('phone', $insert_data);
                         }
                     }
                 }
-                echo '||||||||||';
             }
         }
     }
 }
-
-
-echo '====== '.$rrr.' =======';
-
-//$db = new MysqliDb ('localhost', 'kostiasplin_amo', '88005003360', 'kostiasplin_amo');
-//$insert_data = Array (
-//    "contact_id" => $contacts[0]['id'],
-//    "timestamp" => date(time())
-//);
-//$db->insert ('contact', $insert_data);
