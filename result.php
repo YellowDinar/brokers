@@ -19,28 +19,31 @@ $db = new MysqliDb ('localhost', 'root', 'root', 'brokers');
 
 $phone_numbers = $db->get('phone');
 $result = '<!DOCTYPE html><html><head lang="ru"><meta charset="UTF-8"><title>Сравнение контактов</title></head><body><table>';
+$k = 0;
 foreach($phone_numbers as $phone) {
-    $db->where ("phone_id", $phone['id']);
-    $contacts = $db->get("contact");
+    while($k < 50) {
+        $db->where("phone_id", $phone['id']);
+        $contacts = $db->get("contact");
 //    foreach($contacts as $contact) {
 //        echo $contact["contact_id"].', '.$contact["name"];
 //    }
 //    echo '|||';
-    $result .= '<tr>';
-    foreach($contacts as $contact) {
-        $result .= '<td><a href="https://brokerskazan.amocrm.ru/contacts/detail/'.$contact["contact_id"].'">'.$contact["name"].'</a></td>';
+        $result .= '<tr>';
+        foreach ($contacts as $contact) {
+            $result .= '<td><a href="https://brokerskazan.amocrm.ru/contacts/detail/' . $contact["contact_id"] . '">' . $contact["name"] . '</a></td>';
+        }
+        $result .= '</tr>';
+        $k++;
     }
-    $result .= '</tr>';
 }
 $result = '</table></body></html>';
-echo $result;
-//$file = fopen ("test.html","r+");
-//if ( !$file )
-//{
-//    echo("Ошибка открытия файла");
-//}
-//else
-//{
-//    fputs ( $file, $result);
-//}
-//fclose ($file);
+$file = fopen ("test.html","r+");
+if ( !$file )
+{
+    echo("Ошибка открытия файла");
+}
+else
+{
+    fputs ( $file, $result);
+}
+fclose ($file);
