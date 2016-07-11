@@ -17,18 +17,16 @@ $result = '<!DOCTYPE html><html><head lang="ru"><meta charset="UTF-8"><title>ะกั
 foreach($phone_numbers as $phone) {
     $db->where ("phone_id", $phone['id']);
     $contacts = $db->get("contact");
-    foreach($contacts as $contact) {
-        echo $contact["contact_id"].', '.$contact["name"];
-    }
-    echo '|||';
-//    $result .= '<tr><td>'.$phone["value"].'</td><td><table>';
 //    foreach($contacts as $contact) {
-//        $result .= '<tr><td><a href="https://brokerskazan.amocrm.ru/contacts/detail/'.$contact["contact_id"].'">'.$contact["name"].'</a></td></tr>';
+//        echo $contact["contact_id"].', '.$contact["name"];
 //    }
-//    $result .= '</table></td></tr>';
+//    echo '|||';
+    foreach($contacts as $contact) {
+        $result .= '<tr><td><a href="https://brokerskazan.amocrm.ru/contacts/detail/'.$contact["contact_id"].'">'.$contact["name"].'</a></td></tr>';
+    }
 }
-//$result = '</table></body></html>';
-//echo $result;
+$result = '</table></body></html>';
+echo $result;
 //$file = fopen ("test.html","r+");
 //if ( !$file )
 //{
