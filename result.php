@@ -31,7 +31,7 @@ foreach($phone_numbers as $phone) {
         if(count($contacts) > 1) {
             $result .= '<tr><td>' . $phone['value'] . '</td><td><table>';
             foreach ($contacts as $contact) {
-                $result .= '<tr><td><a href="https://brokerskazan.amocrm.ru/contacts/detail/' . $contact["contact_id"] . '">' . $contact["name"] . '</a></td></tr>';
+                $result .= '<tr><td><a target="_blank" href="https://brokerskazan.amocrm.ru/contacts/detail/' . $contact["contact_id"] . '">' . $contact["name"] . '</a></td></tr>';
             }
             $result .= '</table></td></tr>';
             $k++;
