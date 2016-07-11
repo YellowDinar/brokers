@@ -24,14 +24,14 @@ foreach($phone_numbers as $phone) {
     $result .= '</table></td></tr>';
 }
 $result = '</table></body></html>';
-
-$file = fopen ("test.html","r+");
-if ( !$file )
-{
-    echo("Ошибка открытия файла");
-}
-else
-{
-    fputs ( $file, $result);
-}
-fclose ($file);
+echo $result;
+//$file = fopen ("test.html","r+");
+//if ( !$file )
+//{
+//    echo("Ошибка открытия файла");
+//}
+//else
+//{
+//    fputs ( $file, $result);
+//}
+//fclose ($file);
