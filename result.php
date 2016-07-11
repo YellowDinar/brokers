@@ -28,11 +28,11 @@ foreach($phone_numbers as $phone) {
 //        echo $contact["contact_id"].', '.$contact["name"];
 //    }
 //    echo '|||';
-        $result .= '<tr>';
+        $result .= '<tr><td>'.$phone['value'].'</td><td><table>';
         foreach ($contacts as $contact) {
-            $result .= '<td><a href="https://brokerskazan.amocrm.ru/contacts/detail/' . $contact["contact_id"] . '">' . $contact["name"] . '</a></td>';
+            $result .= '<tr><td><a href="https://brokerskazan.amocrm.ru/contacts/detail/' . $contact["contact_id"] . '">' . $contact["name"] . '</a></td></tr>';
         }
-        $result .= '</tr>';
+        $result .= '</table></td></tr>';
         $k++;
     }
 }
