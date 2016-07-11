@@ -21,7 +21,6 @@ $phone_numbers = $db->get('phone');
 $result = '<!DOCTYPE html><html><head lang="ru"><meta charset="UTF-8"><title>Сравнение контактов</title></head><body><table>';
 $k = 0;
 foreach($phone_numbers as $phone) {
-    while($k < 1000) {
         $db->where("phone_id", $phone['id']);
         $contacts = $db->get("contact");
 //    foreach($contacts as $contact) {
@@ -34,7 +33,6 @@ foreach($phone_numbers as $phone) {
         }
         $result .= '</table></td></tr>';
         $k++;
-    }
 }
 $result .= '</table></body></html>';
 $file = fopen ($_SERVER['DOCUMENT_ROOT']."result.html", "r+");
