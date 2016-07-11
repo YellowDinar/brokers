@@ -21,18 +21,20 @@ $phone_numbers = $db->get('phone');
 $result = '<!DOCTYPE html><html><head lang="ru"><meta charset="UTF-8"><title>Сравнение контактов</title></head><body><table>';
 $k = 0;
 foreach($phone_numbers as $phone) {
+    if ($k < 1000) {
         $db->where("phone_id", $phone['id']);
         $contacts = $db->get("contact");
-//    foreach($contacts as $contact) {
-//        echo $contact["contact_id"].', '.$contact["name"];
-//    }
-//    echo '|||';
-        $result .= '<tr><td>'.$phone['value'].'</td><td><table>';
+    //    foreach($contacts as $contact) {
+    //        echo $contact["contact_id"].', '.$contact["name"];
+    //    }
+    //    echo '|||';
+        $result .= '<tr><td>' . $phone['value'] . '</td><td><table>';
         foreach ($contacts as $contact) {
             $result .= '<tr><td><a href="https://brokerskazan.amocrm.ru/contacts/detail/' . $contact["contact_id"] . '">' . $contact["name"] . '</a></td></tr>';
         }
         $result .= '</table></td></tr>';
         $k++;
+    }
 }
 $result .= '</table></body></html>';
 $file = fopen ($_SERVER['DOCUMENT_ROOT']."result.html", "r+");
