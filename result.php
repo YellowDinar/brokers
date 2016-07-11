@@ -6,6 +6,12 @@
  * Time: 2:18
  */
 
+
+
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1)
+
 set_time_limit(0);
 ini_set('memory_limit', '1500M');
 require_once 'amocrm/MysqliDb.php';
@@ -21,9 +27,11 @@ foreach($phone_numbers as $phone) {
 //        echo $contact["contact_id"].', '.$contact["name"];
 //    }
 //    echo '|||';
+    $result .= '<tr>';
     foreach($contacts as $contact) {
-        $result .= '<tr><td><a href="https://brokerskazan.amocrm.ru/contacts/detail/'.$contact["contact_id"].'">'.$contact["name"].'</a></td></tr>';
+        $result .= '<td><a href="https://brokerskazan.amocrm.ru/contacts/detail/'.$contact["contact_id"].'">'.$contact["name"].'</a></td>';
     }
+    $result .= '</tr>';
 }
 $result = '</table></body></html>';
 echo $result;
