@@ -30,7 +30,7 @@ foreach($phone_numbers as $phone) {
 //    echo '|||';
         $result .= '<tr><td>'.$phone['value'].'</td><td><table>';
         foreach ($contacts as $contact) {
-            $result .= '<tr><td><a href="https://brokerskazan.amocrm.ru/contacts/detail/' . $contact["contact_id"] . '">' . $contact["name"] . '</a></td></tr>';
+            $result .= '<tr><td>'.print_r($contact).'</td></tr>';
         }
         $result .= '</table></td></tr>';
         $k++;
