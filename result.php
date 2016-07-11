@@ -37,7 +37,7 @@ foreach($phone_numbers as $phone) {
     }
 }
 $result = '</table></body></html>';
-$file = fopen ("test.html", "w");
+$file = fopen ($_SERVER['DOCUMENT_ROOT']."test.html", "w");
 if ( !$file )
 {
     echo("Ошибка открытия файла");
