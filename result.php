@@ -36,7 +36,7 @@ foreach($phone_numbers as $phone) {
         $k++;
     }
 }
-$result = '</table></body></html>';
+$result .= '</table></body></html>';
 $file = fopen ($_SERVER['DOCUMENT_ROOT']."result.html", "r+");
 if ( !$file )
 {
