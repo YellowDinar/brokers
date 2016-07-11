@@ -12,8 +12,7 @@ ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1)
 
-set_time_limit(0);
-ini_set('memory_limit', '1G');
+ini_set('memory_limit', '1500M');
 require_once 'amocrm/MysqliDb.php';
 
 $db = new MysqliDb ('localhost', 'root', 'root', 'brokers');
